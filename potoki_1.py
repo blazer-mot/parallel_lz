@@ -2,7 +2,10 @@ import requests
 import time
 import threading
 
-URLS = [
+def download(url, results):
+    response = requests.get(url, verify=False)
+    results.append(f"{url}: {len(response.content)} байт загружено")
+URLS=[
     "https://4kolesa.by/",
     "https://av.by/",
     "https://abw.by/",
@@ -14,7 +17,6 @@ URLS = [
     "https://mb.onliner.by/",
     "https://motoplanet.by/aksessuary"
 ]
-
 def download(url, results):
     response = requests.get(url, verify=False)
     results.append(f"{url}: {len(response.content)} байт загружено")
